@@ -74,7 +74,7 @@ class Command(LabelCommand):
 
     def cleanup_old_backups(self, database):
         """ Cleanup old backups, keeping the number of backups specified by
-            DBBACKUP_CLEANUP_KEEP and any backups that occur on first of the month.
+            DBBACKUP_CLEANUP_KEEP.
         """
         if self.clean:
             print("Cleaning Old Backups for: %s" % database['NAME'])
@@ -84,9 +84,9 @@ class Command(LabelCommand):
                 regex = r'^%s' % self.dbcommands.filename_match(self.servername, '(.*?)')
                 datestr = re.findall(regex, os.path.basename(filepath))[0]
                 dateTime = datetime.datetime.strptime(datestr, dbbackup_settings.DATE_FORMAT)
-                if int(dateTime.strftime("%d")) != 1:
-                    print("  Deleting: %s" % filepath)
-                    self.storage.delete_file(filepath)
+                # if int(dateTime.strftime("%d")) != 1:
+                print("  Deleting: %s" % filepath)
+                self.storage.delete_file(filepath)
 
     def compress_file(self, inputfile):
         """ Compress this file using gzip.

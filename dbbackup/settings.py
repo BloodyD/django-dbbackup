@@ -16,6 +16,7 @@ CLEANUP_KEEP_MEDIA = getattr(settings, 'DBBACKUP_CLEANUP_KEEP_MEDIA', CLEANUP_KE
 MEDIA_PATH = getattr(settings, 'DBBACKUP_MEDIA_PATH', settings.MEDIA_ROOT)
 
 DATE_FORMAT = getattr(settings, 'DBBACKUP_DATE_FORMAT', '%Y-%m-%d-%H%M%S')
+DATE_FORMAT_REGEX = getattr(settings, 'DBBACKUP_DATE_FORMAT_REGEX', r"\d{4}-\d{2}-\d{2}-\d{6}")
 SERVER_NAME = getattr(settings, 'DBBACKUP_SERVER_NAME', '')
 FORCE_ENGINE = getattr(settings, 'DBBACKUP_FORCE_ENGINE', '')
 FILENAME_TEMPLATE = getattr(settings, 'DBBACKUP_FILENAME_TEMPLATE', '{databasename}-{servername}-{datetime}.{extension}')

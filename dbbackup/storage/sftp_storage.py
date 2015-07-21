@@ -40,9 +40,10 @@ class Storage(BaseStorage):
     def backup_dir(self):
         return self.SFTP_PATH
 
-    def delete_file(self, filepath):
-        """ Delete the specified filepath. """
-        self.sftp.remove(filepath)
+    def delete_file(self, filename):
+        """ Delete the specified filename. """
+        backuppath = os.path.join(self.SFTP_PATH, filename)
+        self.sftp.remove(backuppath)
 
     def list_directory(self, raw=False):
         """ List all stored backups for the specified. """

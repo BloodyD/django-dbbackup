@@ -237,7 +237,7 @@ class DBCommands:
 
     def filter_filepaths(self, filepaths, servername=None):
         """ Returns a list of backups file paths from the dropbox entries. """
-        regex = r'[\^\%s]%s' % (os.sep, self.filename_match(servername, '.*?'))
+        regex = r'[\^\%s]*%s' % (os.sep, self.filename_match(servername, '.*?'))
         filepaths = [path for path in filepaths if re.search(regex, path)]
         return filepaths
 
